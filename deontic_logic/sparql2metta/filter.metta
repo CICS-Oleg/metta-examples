@@ -21,3 +21,23 @@
             (match &self ($x title $z) ($z $y))
             Empty))
 
+!(match &self
+   (, ($x price $y)
+      ($x title $z))
+   (if (< $y 30.5) ($z $y) Empty))
+
+;(= (filter $pattern)
+;    (match &self ($x price $y)
+;            (if $pattern
+;            (match &self ($x title $z) ($z $y))
+;            Empty)))
+;
+;
+;(= (filter (less-than $b))
+;    (match &self ($x price $y)
+;            (if (< )
+;            (match &self ($x title $z) ($z $y))
+;            Empty)))
+;
+;!(filter (< $y 30.5))
+
