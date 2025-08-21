@@ -14,7 +14,7 @@
     (foldl-atom $rules_outputs True  $a $b (and  $a $b)))
 
 
-;rule engine takes a list of rules, each of which either populates space with new facts or returns Empty
+;rule engine takes a list of rules, each of which either populates space with new facts or returns Empty,
 ;and consistently applies these rules until knowledge base does not change
 
 (= (rule-engine $rules)

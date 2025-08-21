@@ -66,6 +66,7 @@
 ;}
 
 !(import! &self very_simple_inference_engine)
+!(import! &self not_exist)
 
 (Parent Tom Bob)
 (Parent Pam Bob)
@@ -86,13 +87,14 @@
 
 
 (= (rule1)
-    (match &self (Parent $x $y) (if (unify &self (Predecessor $x $z) False True) (add-atom &self (Predecessor $x $y)) Empty)))
+    (match &self (Parent $x $y) (if (not_exist (Predecessor $x $z)) (add-atom &self (Predecessor $x $y)) Empty)))
 
 (= (rule2)
-    (match &self (, (Parent $x $y) (Predecessor $y $z)) (if (unify &self (Predecessor $x $z) False True) (add-atom &self (Predecessor $x $z)) Empty)))
+    (match &self (, (Parent $x $y) (Predecessor $y $z)) (if (not_exist (Predecessor $x $z)) (add-atom &self (Predecessor $x $z)) Empty)))
 
 (= (rule3)
-    (match &self (, (Predecessor $y $z) (Person (Female $y))) (if (unify &self (FemPredecessor $y $z) False True) (add-atom &self (FemPredecessor $y $z)) Empty)))
+    (match &self (, (Predecessor $y $z) (Person (Female $y))) (if (not_exist (FemPredecessor $y $z)) (add-atom &self (FemPredecessor $y $z)) Empty)))
+
 
 !(rule-engine (rule1 rule2 rule3))
 

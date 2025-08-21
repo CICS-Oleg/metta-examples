@@ -55,10 +55,10 @@
 (wrote (Author Author1) BookA)
 
 (= (rule1)
-    (match &self (inspiredBy $x $y) (if (unify &self (influenced $x $y) False True) (add-atom &self (influenced $x $y)) Empty)))
+    (match &self (inspiredBy $x $y) (if (not_exist (influenced $x $y)) (add-atom &self (influenced $x $y)) Empty)))
 
 (= (rule2)
-    (match &self (, (inspiredBy $x $y) (influenced $y $z)) (if (unify &self (influenced $x $z) False True) (add-atom &self (influenced $x $z)) Empty)))
+    (match &self (, (inspiredBy $x $y) (influenced $y $z)) (if (not_exist (influenced $x $z)) (add-atom &self (influenced $x $z)) Empty)))
 
 !(rule-engine (rule1 rule2))
 
